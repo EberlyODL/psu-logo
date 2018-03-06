@@ -1,5 +1,3 @@
-
-
 <!--
 `psu-logo`
 
@@ -10,14 +8,14 @@
 <dom-module id="psu-logo">
   <template>
     <style>
-       :host {
+      :host {
         display: block;
         position: relative;
       }
 
       #college-name {
         font-size: 1.3em;
-        fill: #fff;
+        fill: #1E407D;
       }
 
       .element-invisible {
@@ -32,7 +30,61 @@
       svg {
         position: relative;
         z-index: 5;
+        height: 100%;
+        width: auto;
       }
+
+      /* Theme: Dark */
+      :host[theme="dark"] svg .st0 {
+        fill: #FFFFFF;
+      }
+
+      :host[theme="dark"] svg .st1 {
+        fill: #291A09;
+      }
+
+      :host[theme="dark"] svg .st2 {
+        fill: #B0A192;
+      }
+
+      :host[theme="dark"] svg #college-name {
+        fill: #291A09;
+      }
+
+      /* Theme: Dark 2 */
+      :host[theme="dark2"] svg .st0 {
+        fill: #FFFFFF;
+      }
+
+      :host[theme="dark2"] svg .st1 {
+        fill: #291A09;
+      }
+
+      :host[theme="dark2"] svg .st2 {
+        fill: #B0A192;
+      }
+
+      :host[theme="dark2"] svg #penn-state-text {
+        fill: white;
+      }
+
+      :host[theme="dark2"] svg #college-name {
+        fill: white;
+      }
+
+      /* Theme: white */
+      :host[theme="white"] svg .st0 {
+        fill: #FFFFFF;
+      }
+
+      :host[theme="white"] svg #penn-state-text {
+        fill: white;
+      }
+
+      :host[theme="white"] svg #college-name {
+        fill: white;
+      }
+
 
       #edit-panel {
         background-color: #fafafa;
@@ -62,8 +114,12 @@
         margin-top: 10px;
       }
 
-       :host[edit] #edit-panel {
+      :host[edit] #edit-panel {
         max-height: 200px;
+      }
+
+      text {
+        font-weight: 100;
       }
     </style>
 
@@ -108,7 +164,7 @@
      v27.8C111.6,94.3,89,109.6,72.6,119.2z" />
             </g>
             <g id="XMLID_273_">
-              <path id="XMLID_279_" class="st1" d="M84.3,83.3c0-0.6,0.5-1.5,0.5-2.3c0-1-1.2-1.3-2.1-1.4c-1.9-0.3-2.6-0.2-2.6-0.6
+              <path id="sheild-lion" class="st1" d="M84.3,83.3c0-0.6,0.5-1.5,0.5-2.3c0-1-1.2-1.3-2.1-1.4c-1.9-0.3-2.6-0.2-2.6-0.6
      c0-0.3,0.3-0.6,0.6-1.1c0.5-0.8,1.8-1,2.4-1.1c0.9-0.1,1.8-0.2,3-0.2c1.3,0,2.4,0.2,2.9,0.3c1.2,0.2,1.4,0.7,1.4,1.3
      c0,0.1,0,0.4,0,0.6c0,0.6-0.5,0.9-1.3,1c-0.2,0-0.5,0.1-0.6,0.1c-0.6,0.1-1.4,0.2-1.6,1c-0.6,1.6-1.6,2.9-2.3,2.9
      C84.5,83.6,84.3,83.5,84.3,83.3z M86.1,56.9c-0.1,0-0.3-0.1-0.3-0.4c0-0.3,0.2-0.6,0.6-1.2c1-1.3,2.3-2.9,2.8-2.9
@@ -158,7 +214,7 @@
      C80.8,108.5,80.5,107.3,80.7,104.9z" />
             </g>
           </g>
-          <path class="st1" d="M127.3,45.6h-2.4v-3.5h11c5.8,0,8.8,3,8.8,7.3c0,5.1-4,7.3-8.8,7.3h-3.6v5.7h2.4v3.5h-9.7v-3.5h2.4V45.6z
+          <path id="penn-state-text" class="st1" d="M127.3,45.6h-2.4v-3.5h11c5.8,0,8.8,3,8.8,7.3c0,5.1-4,7.3-8.8,7.3h-3.6v5.7h2.4v3.5h-9.7v-3.5h2.4V45.6z
   M135.3,53.3c2.5,0,4.1-1.4,4.1-3.8c0-2.2-1.4-3.9-4.2-3.9h-3v7.7H135.3z M150.7,58.1c0.1,2.8,2.3,4.6,5.7,4.6
  c2.9,0,4.7-0.8,5.5-1.1v3.7c-0.7,0.3-2.7,1.1-6.6,1.1c-6.9,0-9.8-4.3-9.8-9.2c0-5.6,3.4-9.4,9-9.4c6.1,0,8.6,4.6,8.6,10.4H150.7z
   M157.9,54.8c0-2.5-1.4-3.9-3.6-3.9c-2.2,0-3.4,1.4-3.6,3.9H157.9z M282.8,58.1c0.1,2.8,2.3,4.6,5.7,4.6c2.9,0,4.7-0.8,5.5-1.1v3.7
@@ -206,8 +262,6 @@
         wordWrap: {
           type: Number,
           value: 25,
-          notify: true,
-          reflectToAttribute: true
         },
         url: {
           type: String,
@@ -224,6 +278,19 @@
         },
         line3: {
           type: String
+        },
+        /**
+         * Theme to render the mark
+         * Options:
+         *  - default
+         *  - dark
+         *  - dark2
+         *  - white
+         */
+        theme: {
+          type: String,
+          value: 'default',
+          reflectToAttribute: true,
         },
         edit: {
           type: Boolean,
